@@ -8,6 +8,7 @@ class ViraaApp {
         this.initializeModelSelector();
         this.initializeChatListeners();
         this.initializeTabListeners();
+        this.initializeMobileMenu();
     }
 
     initializeEventListeners() {
@@ -266,6 +267,40 @@ class ViraaApp {
             settingsPane.classList.remove('active');
             aboutPane.classList.remove('active');
             chatsPane.classList.add('active');
+        }
+
+        const sidebar = document.querySelector('.sidebar');
+        if (window.innerWidth <= 768 && sidebar.classList.contains('show')) {
+            sidebar.classList.remove('show');
+        }
+    }
+
+    initializeMobileMenu() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        if (menuToggle && sidebar) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('show');
+            });
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', (e) => {
+                if (sidebar.classList.contains('show') && 
+                    !sidebar.contains(e.target) && 
+                    !menuToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            });
+
+            // Close sidebar when selecting a chat
+            document.querySelectorAll('.chat-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('show');
+                    }
+                });
+            });
         }
     }
 }

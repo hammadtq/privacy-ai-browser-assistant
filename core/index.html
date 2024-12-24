@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -71,21 +75,15 @@
             <div class="col-9 main-content">
                 <!-- Chat Container -->
                 <div class="chat-container">
-                    <div class="chat-header p-3 border-bottom">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-robot me-2"></i>
-                                <select class="form-select form-select-sm current-model-select" style="width: auto;">
-                                    <option value="gpt-3.5-turbo">GPT 3.5 Turbo</option>
-                                    <option value="gpt-4">GPT 4</option>
-                                    <option value="claude-3-opus">Claude 3 Opus</option>
-                                    <option value="custom">Custom Model</option>
-                                </select>
-                            </div>
-                            <div class="model-info text-muted small">
-                                <i class="fas fa-info-circle me-1"></i>
-                                <span class="model-status">Using default model</span>
-                            </div>
+                    <div class="chat-header">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-robot me-2"></i>
+                            <select class="form-select form-select-sm current-model-select">
+                                <option value="gpt-3.5-turbo">GPT 3.5 Turbo</option>
+                                <option value="gpt-4">GPT 4</option>
+                                <option value="claude-3-opus">Claude 3 Opus</option>
+                                <option value="custom">Custom Model</option>
+                            </select>
                         </div>
                     </div>
                     <div class="chat-messages">
