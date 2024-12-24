@@ -30,33 +30,3 @@ An open-source, privacy-focused AI assistant browser extension that enhances you
     *   React, Vue.js, Angular, or vanilla HTML/CSS/JS
 *   **Hosting:**
     *   User-managed (optionally self-hosted), or hosted solutions like DigitalOcean, AWS, Google Cloud (for backend and website).
-
-## Development
-
-The project is built with vanilla JavaScript, HTML, and CSS to maintain simplicity and eliminate dependencies. To contribute:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## Future Plans
-
-- [ ] Add dark mode support
-- [ ] Implement actual API integrations
-- [ ] Add export/import functionality for chat history
-- [ ] Create browser extension version
-- [ ] Add support for custom prompt templates
-- [ ] Implement streaming responses
-
-## Technical Details
-
-For detailed technical information about the project's architecture and planned features, see [tech_stack.md](docs/tech_stack.md).
-
-## License
-
-MIT License - feel free to use this project however you'd like!
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request.

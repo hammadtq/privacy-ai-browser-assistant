@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Add Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-3 sidebar">
+                <div class="sidebar-header">
+                    <h3>Viraa</h3>
+                    <button class="btn btn-primary new-chat">
+                        <i class="fas fa-plus"></i> New Chat
+                    </button>
+                    <!-- Navigation tabs - Keep only Chats in sidebar -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#chats">Chats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#settings">Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#about">About</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Sidebar content - Only chat list -->
+                <div id="chats" class="tab-pane active">
+                    <div class="chat-list">
+                        <div class="chat-item active" data-chat-id="1">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="chat-title-container d-flex align-items-center">
+                                    <i class="fas fa-comments me-2"></i>
+                                    <span class="chat-title" contenteditable="true">Understanding Quantum Computing</span>
+                                </div>
+                                <div class="chat-actions">
+                                    <i class="fas fa-edit rename-chat me-2"></i>
+                                    <i class="fas fa-trash delete-chat"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-item" data-chat-id="2">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="chat-title-container d-flex align-items-center">
+                                    <i class="fas fa-comments me-2"></i>
+                                    <span class="chat-title" contenteditable="true">Python Code Review</span>
+                                </div>
+                                <div class="chat-actions">
+                                    <i class="fas fa-edit rename-chat me-2"></i>
+                                    <i class="fas fa-trash delete-chat"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-9 main-content">
+                <!-- Chat Container -->
+                <div class="chat-container">
+                    <div class="chat-header p-3 border-bottom">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-robot me-2"></i>
+                                <select class="form-select form-select-sm current-model-select" style="width: auto;">
+                                    <option value="gpt-3.5-turbo">GPT 3.5 Turbo</option>
+                                    <option value="gpt-4">GPT 4</option>
+                                    <option value="claude-3-opus">Claude 3 Opus</option>
+                                    <option value="custom">Custom Model</option>
+                                </select>
+                            </div>
+                            <div class="model-info text-muted small">
+                                <i class="fas fa-info-circle me-1"></i>
+                                <span class="model-status">Using default model</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message user">
+                            Can you explain quantum computing in simple terms?
+                        </div>
+                        <div class="message assistant">
+                            Think of classical computing as a coin with two states: heads (1) or tails (0). Quantum computing is like having a coin that can spin, existing in both states at once until you look at it. This property, called superposition, allows quantum computers to process vast amounts of information simultaneously, making them potentially much more powerful for certain tasks.
+                        </div>
+                        <div class="message user">
+                            That's interesting! How is this actually useful in practice?
+                        </div>
+                        <div class="message assistant">
+                            Quantum computers excel at specific tasks like:
+                            1. Cryptography: Breaking and creating more secure encryption
+                            2. Drug Discovery: Simulating molecular interactions
+                            3. Optimization: Solving complex logistics problems
+                            4. Machine Learning: Processing vast amounts of data simultaneously
+
+                            However, they're still in early stages and aren't meant to replace classical computers for everyday tasks.
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <div class="input-group">
+                            <textarea class="form-control" placeholder="Type your message..."></textarea>
+                            <button class="btn btn-primary send-button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab (Full Width) -->
+            <div id="settings" class="tab-pane col-12">
+                <div class="settings-content">
+                    <div class="full-page-header">
+                        <div class="d-flex align-items-center">
+                            <a href="#chats" class="nav-link back-button me-3" data-bs-toggle="tab">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                            <h3 class="mb-0">Viraa</h3>
+                        </div>
+                    </div>
+                    <div class="container py-4">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <h4 class="mb-4">Settings</h4>
+                                <form>
+                                    <div class="mb-4">
+                                        <label for="llm-api-key" class="form-label">OpenAI API Key</label>
+                                        <input type="password" class="form-control" id="llm-api-key" placeholder="Enter your OpenAI API key">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="anthropic-api-key" class="form-label">Anthropic API Key</label>
+                                        <input type="password" class="form-control" id="anthropic-api-key" placeholder="Enter your Anthropic API key">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="model-select" class="form-label">Model to Use</label>
+                                        <select class="form-select" id="model-select">
+                                            <option value="gpt-3.5-turbo">GPT 3.5 Turbo</option>
+                                            <option value="gpt-4">GPT 4</option>
+                                            <option value="claude-3-opus">Claude 3 Opus</option>
+                                            <option value="custom">Custom Model</option>
+                                        </select>
+                                    </div>
+                                    <div id="custom-model-settings" style="display: none">
+                                        <div class="mb-4">
+                                            <label for="model-endpoint" class="form-label">Custom Model Endpoint (URL)</label>
+                                            <input type="text" class="form-control" id="model-endpoint" placeholder="Enter your custom model's endpoint">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="model-api-key" class="form-label">Custom Model API Key</label>
+                                            <input type="password" class="form-control" id="model-api-key" placeholder="Enter your model API key">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="store-history-checkbox">
+                                        <label class="form-check-label" for="store-history-checkbox">Store Chat History</label>
+                                    </div>
+                                    <button type="button" class="btn btn-primary px-4" id="save-settings-button">Save Settings</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab (Full Width) -->
+            <div id="about" class="tab-pane col-12">
+                <div class="about-content">
+                    <div class="full-page-header">
+                        <div class="d-flex align-items-center">
+                            <a href="#chats" class="nav-link back-button me-3" data-bs-toggle="tab">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                            <h3 class="mb-0">Viraa</h3>
+                        </div>
+                    </div>
+                    <div class="container py-4">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <h4 class="mb-4">About Viraa</h4>
+                                <p class="lead mb-4">
+                                    Viraa is designed with privacy and user autonomy at its core. Unlike traditional chat platforms, 
+                                    all your API keys, settings, and conversations remain under your complete control – either stored locally in your 
+                                    browser or in your own Supabase instance. This means your conversations and credentials never pass through 
+                                    third-party servers, ensuring your data remains truly yours.
+                                </p>
+
+                                <p class="text-muted mb-4">
+                                    The application offers unprecedented flexibility in choosing your AI conversation partner. Whether you prefer 
+                                    OpenAI's GPT models, Anthropic's Claude, or your own custom endpoints, the interface adapts seamlessly to your 
+                                    choice. This modular design allows you to switch between different AI models without changing applications, 
+                                    making it a future-proof solution for your AI interaction needs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Your custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
